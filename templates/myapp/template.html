@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">{{campaign}}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+     <div class="navbar-nav" style="margin-left: 30rem">
+     	<button type="button" class="btn btn-success" style="margin-left: .1rem">{% trans 'Save as draft' %}</button>
+     	<button type="button" class="btn btn-success" style="margin-left: .1rem">{% trans 'Previous' %}</button>
+     	<button type="button" class="btn btn-success" style="margin-left: .1rem">{% trans 'Next' %}</button>
+     	<button type="button" class="btn btn-success" style="margin-left: .1rem">{% trans 'Cancel' %}</button>
+     	<button type="button" class="btn btn-success" style="margin-left: .1rem">{% trans 'Submit' %}</button>
+    </div>
+  </div>
+</nav>
+<div class="container">
+	<div class="row">
+		<div class="col-md-2" style="padding:0; ">
+			<ul class="list-group">
+			  <li class="list-group-item">{% trans 'Audience' %}</li>
+			  <li class="list-group-item">{% trans 'Mailing List Exclusion' %}/{% trans 'Count' %}</li>
+			  <li class="list-group-item">{% trans 'Other' %}/{% trans 'Attachment' %}/ {% trans 'Dynamic Variable' %}</li>
+			  <li class="list-group-item active">{% trans 'Template' %}</li>
+			  <li class="list-group-item">{% trans 'Schedule' %}/{% trans 'Co-Author' %}</li>
+			  <li class="list-group-item">{% trans 'Preview' %}</li>
+			  <li class="list-group-item">{% trans 'Approval Workflow' %}</li>
+			</ul>
+		</div>
+		<div class="col-md-10">
+			<div class="jumbotron" style="border: 1px solid #ddd;border-radius: 30px;margin-top: 1rem">
+        <div class="o-tab-container ">
+          <a class="o-tab-heading" href="#" id="tab1">My Template And Import</a>
+          <div class="o-tab-content show" id="tab-1-content">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch</div>
+          <a class="o-tab-heading" href="#" id="tab2">Layout Template Editor</a>
+          <div class="o-tab-content" id="tab-2-content">Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</div>
+          <a class="o-tab-heading" href="#" id="tab3">Existing Design Templates</a>
+          <div class="o-tab-content" id="tab-3-content">Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</div>
+          <a class="o-tab-heading" href="#" id="tab4">HTML Editor</a>
+          <div class="o-tab-content" id="tab-4-content">
+            {{form.media}}
+            {{form.as_p}}
+          </div>
+        </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+  <script src="{% static 'js/myapp/audience.js' %}"></script>
+{% endblock  %}

@@ -47,7 +47,9 @@ INSTALLED_APPS = [
     # 'templatetags',
     'users',
     'mailing_list',
-    'mailing_templates'
+    'mailing_templates',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -122,6 +124,23 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+####################################
+    ##  CKEDITOR CONFIGURATION ##
+####################################
+
+CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_IMAGE_BACKEND = "pillow"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': None,
+    },
+}
+
+###################################
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
@@ -153,8 +172,9 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 if DEBUG:
     MEDIA_URL = '/media/'
     STATIC_ROOT = os.path.join(BASE_DIR,'static','static-only')
-    MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+    MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
     STATICFILES_DIRS = (os.path.join(BASE_DIR,'static','static'),)
+    CKEDITOR_UPLOAD_PATH = 'uploads/'
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',

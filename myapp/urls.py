@@ -28,7 +28,12 @@ urlpatterns = [
     path('ajax/m4/', load_m4,name='load_m4'),
     path('ajax/m5/', load_m5,name='load_m5'),
     path('ajax/m6/', load_m6,name='load_m6'),
+    path('ajax/region/', load_region,name='load_region'),
+    path('ajax/country/', load_country,name='load_country'),
+    path('ajax/location/', load_location,name='load_location'),
+    path('update/<int:pk>/',PersonUpdateView.as_view(), name='person_change'),
     url(r'^audience/(?P<campaign>[-\w]+)/$', AudienceView.as_view(), name='audience'),
+    url(r'^template/(?P<campaign>[-\w]+)/$', MailingTemplateView.as_view(), name='template'),
 ]
 # urlpatterns += i18n_patterns(path('',include('myapp.urls')))
 # urlpatterns += i18n_patterns(path('home/', home))

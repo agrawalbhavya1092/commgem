@@ -104,3 +104,58 @@ class LocationSetup(models.Model):
 
 	class Meta:
 		db_table = 'CM_Location_Setup_tbl'
+
+
+
+class GenericCompany(models.Model):
+
+        generic_company = models.CharField(max_length=20,db_column='CM_STP_GEN_COMP',null=True)
+        def __str__(self):
+        	return self.generic_company
+
+class Region(models.Model):
+
+        generic_company = models.ForeignKey('GenericCompany',null=True,on_delete=models.CASCADE)
+
+        region = models.CharField(max_length=20,db_column='CM_STP_REGION',null=True)
+
+        def __str__(self):
+        	return self.region
+
+class Country(models.Model):
+
+        region=models.ForeignKey('Region',null=True,on_delete=models.CASCADE)
+
+        country = models.CharField(max_length=20,db_column='CM_STP_COUNTRY',null=True)
+        def __str__(self):
+        	return self.country
+
+class Location(models.Model):
+
+        country=models.ForeignKey('Country',null=True,on_delete=models.CASCADE)
+
+        location = models.CharField(max_length=20,db_column='CM_STP_LOCATION',null=True)
+        def __str__(self):
+        	return self.location
+
+# class Status(models.Model):
+
+#         location=models.ForeignKey('Location',null=True,on_delete=models.CASCADE)
+
+#         status = models.CharField(max_length=20,db_column='CM_STP_STATUS',null=True)
+
+ 
+
+class LocationSetup1(models.Model):
+
+        user=models.ForeignKey('users.User',null=True,on_delete=models.CASCADE)
+
+        generic_company = models.ManyToManyField('GenericCompany',null=True)
+
+        region=models.ManyToManyField('Region',null=True)
+
+        country=models.ManyToManyField('Country',null=True)
+
+        location=models.ManyToManyField('Location',null=True)
+
+        status = models.CharField(max_length=20,db_column='CM_STP_STATUS',null=True)

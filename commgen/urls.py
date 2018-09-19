@@ -26,8 +26,6 @@ from . import settings
 urlpatterns = [
 	path('i18n/', include('django.conf.urls.i18n')),
     path('admin/', admin.site.urls),
-    # path('', home,name = 'home'),
-    # path('ajax/load_prevnext_calendar', load_prevnext_calendar,name = 'load_prevnext_calendar',kwargs={'calendar_slug':'calendar1','period': Month}),
     path('ajax/load_prevnext_calendar', LoadCalendar.as_view(),name = 'load_prevnext_calendar',kwargs={'calendar_slug':'calendar1','period': Month}),
     path('schedule/', include('schedule.urls')),
     path('campaign/', include('myapp.urls')),
@@ -35,6 +33,7 @@ urlpatterns = [
     url(r'^(?P<calendar_slug>[-\w]+)/$', MyView.as_view(), name='home',kwargs={'period': Month}),
     path('logout/', auth_views.logout,{'template_name':'registration/logout.html'}, name='logout'),
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     ]
 # urlpatterns += i18n_patterns(
 #     path('admin/', admin.site.urls),
