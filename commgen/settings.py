@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from .config import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,8 +27,19 @@ SECRET_KEY = 'gy)8sr$20%yzfqo**id!p0)&qe=6+x)&w3+07jfre&8-0tv1^3'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# SMTP settings
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = CONFIG_EMAIL_HOST
+EMAIL_USE_TLS = CONFIG_EMAIL_USE_TLS 
+EMAIL_PORT = CONFIG_EMAIL_PORT
+EMAIL_HOST_USER = CONFIG_EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = CONFIG_EMAIL_HOST_PASSWORD 
+# EMAIL_HOST = 'smtp.live.com'
+# EMAIL_HOST_USER = 'bhavya.92@hotmail.com'
+# EMAIL_HOST_PASSWORD = '!123bhavya'
+# EMAIL_PORT = '25'
 
-LOGIN_REDIRECT_URL = '/main_page/calendar1'
+LOGIN_REDIRECT_URL = '/dashboard/'
 
 # Application definition
 

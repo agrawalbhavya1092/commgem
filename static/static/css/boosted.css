@@ -13252,4 +13252,14 @@ a:focus {
     pointer-events: none;
 }
 
+.option-box{
+  /*display: inline-block;*/
+  position: absolute;
+  background-color: white;
+  z-index: 1000;
+  border: 2px solid #ddd;
+  font-size: 17px;
+  font-weight: 800;
+}
+
 /*# sourceMappingURL=boosted.css.map */

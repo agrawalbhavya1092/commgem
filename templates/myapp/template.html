@@ -8,28 +8,18 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-     <div class="navbar-nav" style="margin-left: 30rem">
-     	<button type="button" class="btn btn-success" style="margin-left: .1rem">{% trans 'Save as draft' %}</button>
-     	<button type="button" class="btn btn-success" style="margin-left: .1rem">{% trans 'Previous' %}</button>
-     	<button type="button" class="btn btn-success" style="margin-left: .1rem">{% trans 'Next' %}</button>
-     	<button type="button" class="btn btn-success" style="margin-left: .1rem">{% trans 'Cancel' %}</button>
-     	<button type="button" class="btn btn-success" style="margin-left: .1rem">{% trans 'Submit' %}</button>
+     <div class="navbar-nav" style="margin-left: 40rem">
+     	<!-- <a href="" type="button" class="btn btn-success" style="margin-left: .1rem">{% trans 'Save as draft' %}</a> -->
+     	<a href="{% url 'audience' campaign %}" type="button" class="btn btn-success" style="margin-left: .1rem">{% trans 'Previous' %}</a>
+     	<a href="" type="button" class="btn btn-success" style="margin-left: .1rem">{% trans 'Next' %}</a>
+      <a href="" type="button" class="btn btn-success" style="margin-left: .1rem">{% trans 'Cancel' %}</a>
+      <a href="" type="button" class="btn btn-success" style="margin-left: .1rem">{% trans 'Submit' %}</a>
     </div>
   </div>
 </nav>
 <div class="container">
 	<div class="row">
-		<div class="col-md-2" style="padding:0; ">
-			<ul class="list-group">
-			  <li class="list-group-item">{% trans 'Audience' %}</li>
-			  <li class="list-group-item">{% trans 'Mailing List Exclusion' %}/{% trans 'Count' %}</li>
-			  <li class="list-group-item">{% trans 'Other' %}/{% trans 'Attachment' %}/ {% trans 'Dynamic Variable' %}</li>
-			  <li class="list-group-item active">{% trans 'Template' %}</li>
-			  <li class="list-group-item">{% trans 'Schedule' %}/{% trans 'Co-Author' %}</li>
-			  <li class="list-group-item">{% trans 'Preview' %}</li>
-			  <li class="list-group-item">{% trans 'Approval Workflow' %}</li>
-			</ul>
-		</div>
+      {% include 'campaign_sidebar.html' %}
 		<div class="col-md-10">
 			<div class="jumbotron" style="border: 1px solid #ddd;border-radius: 30px;margin-top: 1rem">
         <div class="o-tab-container ">
@@ -41,8 +31,12 @@
           <div class="o-tab-content" id="tab-3-content">Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</div>
           <a class="o-tab-heading" href="#" id="tab4">HTML Editor</a>
           <div class="o-tab-content" id="tab-4-content">
-            {{form.media}}
-            {{form.as_p}}
+            <form method="post" action="">
+              {% csrf_token %}
+              {{form.media}}
+              {{form.as_p}}              
+            </form>
+
           </div>
         </div>
 			</div>
@@ -50,5 +44,17 @@
 	</div>
 </div>
 
-  <script src="{% static 'js/myapp/audience.js' %}"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+        // $('.cke_top').css({'padding':''}).remove();            
+        $('label[for="id_content"]').remove();
+        $('.cke_top').attr({'style':'padding:0'});            
+        // $('#cke_1_top').css({'padding':''});            
+    });
+        // $('.cke_top').css({'padding':''});            
+        $('.cke_top').attr({'style':'padding:0'});            
+
+
+
+  </script>
 {% endblock  %}

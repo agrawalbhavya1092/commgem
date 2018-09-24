@@ -171,10 +171,11 @@ class User(AbstractBaseUser,PermissionsMixin):
     active = models.BooleanField(default=True,db_column = 'CG_UM_STATUS')
     staff = models.BooleanField(default=False)
     admin = models.BooleanField(default=False) # a superuser
+    is_active = models.BooleanField(default=True)
     # notice the absence of a "Password field", that's built in.
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['emp_id'] # Email & Password are required by default.
+    USERNAME_FIELD = 'emp_id'
+    REQUIRED_FIELDS = ['email'] # Email & Password are required by default.
 
 
     objects = UserManager()

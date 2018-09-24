@@ -1,4 +1,6 @@
-<option value="">---------</option>
 {% for r in region %}
-<option value="{{ r.pk }}">{{ r.region }}</option>
+<div class="custom-select-option">
+<input onchange="toggleFillColor(this);" type="checkbox"
+  name="region[]" value="{{r.region}}" id=""> {{r.region}}
+</div>
 {% endfor %}
