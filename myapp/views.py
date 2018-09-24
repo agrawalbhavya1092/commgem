@@ -144,7 +144,7 @@ class MailingTemplateView(LoginRequiredMixin,TemplateView):
         campaign_name = kwargs["campaign"]
         form = PostForm()
         source = DepartmentSetup.objects.order_by().values('source').distinct()
-        return render(request,'myapp/template.html',{'campaign':campaign_name,'sources':source,'form':form})
+        return render(request,'myapp/template.html',{'campaign':campaign_name,'source':source,'form':form})
 
     def post(self,request,*args,**kwargs):
         campaign_name = kwargs["campaign"]
